@@ -15,12 +15,16 @@ public class Main {
         Runnable rinc,rdec,raff;
         rinc = () -> {
             for (int i=0; i<n; i++) {
-                d.inc();
+                synchronized (d){
+                    d.inc();
+                }
             }
         };
         rdec = () -> {
             for (int i=0; i<n; i++) {
-                d.dec();
+                synchronized (d){
+                    d.dec();
+                }
             }
         };
         raff = () -> System.out.println(d);
